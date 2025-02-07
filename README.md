@@ -10,7 +10,21 @@ forge create --rpc-url $RPC_URL --private-key $PRIVATE_KEY ERC721Factory --broad
 # TODO after preparing NFT image(s) & JSON metada for upload to Irys
 cast send --rpc-url $RPC_URL --private-key $PRIVATE_KEY 0x84C3EDD4f57196BA428858622fba2F95ccdBc527 \
     "createCollection(string,string,string,string,string,string,string,string)" \
-    "MyCollection" "MCOL" "Electronic" "Summer Festival" "Los Angeles" "2024-09-15" "18:00" "DJ Alex"
+    "FestivalNFT" "FEST" "Electronic" "Ultra Miami" "Miami, FL" "2024-03-15" "20:00" "DJ Snake"
+
+cast send --rpc-url $RPC_URL --private-key $PRIVATE_KEY 0x84C3EDD4f57196BA428858622fba2F95ccdBc527 \
+    "createCollection(string,string,string,string,string,string,string,string)" \
+    "Ultra Tokyo" "ULTTKY" "Electronic" "Ultra Music Festival" "Tokyo, Japan" "2024-07-20" "18:00" "DJ Kura" && \
+cast send --rpc-url $RPC_URL --private-key $PRIVATE_KEY 0x84C3EDD4f57196BA428858622fba2F95ccdBc527 \
+    "createCollection(string,string,string,string,string,string,string,string)" \
+    "Tomorrowland" "TML" "EDM" "Tomorrowland 2024" "Boom, Belgium" "2024-07-28" "16:00" "Armin van Buuren" && \
+cast send --rpc-url $RPC_URL --private-key $PRIVATE_KEY 0x84C3EDD4f57196BA428858622fba2F95ccdBc527 \
+    "createCollection(string,string,string,string,string,string,string,string)" \
+    "Ibiza Summer Party" "IBZ24" "House" "Sunset Sessions" "Ibiza, Spain" "2024-08-05" "19:30" "Carl Cox"
+
+
+
+cast call 0x84C3EDD4f57196BA428858622fba2F95ccdBc527 --rpc-url $RPC_URL "getCollections()"
 
 # ADDRESS goes here
 
