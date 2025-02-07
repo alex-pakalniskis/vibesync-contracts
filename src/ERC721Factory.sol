@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract ERC721Factory {
@@ -20,7 +21,7 @@ contract ERC721Factory {
     }
 }
 
-contract NFTCollection is ERC721, Ownable {
+contract NFTCollection is ERC721URIStorage, Ownable {
     uint256 public nextTokenId;
     string public genre;
     string public showTitle;
@@ -44,8 +45,9 @@ contract NFTCollection is ERC721, Ownable {
         djName = _djName;
     }
 
-    function mint(string memory data) external {
+    function mint(string memory data, string memory _tokenURI) external {
         _safeMint(msg.sender, nextTokenId);
+        _setTokenURI(nextTokenId, _tokenURI);
         tokenData[nextTokenId] = data;
         emit Minted(msg.sender, nextTokenId, data);
         nextTokenId++;
