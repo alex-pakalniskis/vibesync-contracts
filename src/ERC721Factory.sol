@@ -31,7 +31,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
     string public djName;
     mapping(uint256 => string) private tokenData;
 
-    event Minted(address indexed minter, uint256 indexed tokenId, string data);
+    event Minted(address indexed minter, uint256 indexed tokenId, string data, string tokenURI);
 
     constructor(string memory name, string memory symbol, string memory _genre, string memory _showTitle, string memory _location, string memory _date, string memory _startTime, string memory _djName, address owner)
         ERC721(name, symbol)
@@ -49,7 +49,7 @@ contract NFTCollection is ERC721URIStorage, Ownable {
         _safeMint(msg.sender, nextTokenId);
         _setTokenURI(nextTokenId, _tokenURI);
         tokenData[nextTokenId] = data;
-        emit Minted(msg.sender, nextTokenId, data);
+        emit Minted(msg.sender, nextTokenId, data, _tokenURI);
         nextTokenId++;
     }
 
