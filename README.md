@@ -1,66 +1,19 @@
-## Foundry
+Steps
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+``` bash
+forge build
+forge create --rpc-url $RPC_URL --private-key $PRIVATE_KEY ERC721Factory --broadcast
+# address 0x33cA2Be8548928C08C22D781C6f3E67FE5eBB66d
 
-Foundry consists of:
+cast send --rpc-url $RPC_URL --private-key $PRIVATE_KEY 0x33cA2Be8548928C08C22D781C6f3E67FE5eBB66d \
+    "createCollection(string,string,string,string,string,string,string,string)" \
+    "MyCollection" "MCOL" "Electronic" "Summer Festival" "Los Angeles" "2024-09-15" "18:00" "DJ Alex"
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+# 0x19b3dbea5e27994a66c4fde175463e094e90d0cd
 
-## Documentation
+cast send --rpc-url $RPC_URL --private-key $PRIVATE_KEY 0x19b3dbea5e27994a66c4fde175463e094e90d0cd "mint(string)" "Woah my vibe is on-chain"
 
-https://book.getfoundry.sh/
+forge inspect ERC721Factory abi > ERC721Factory.json
+forge inspect NFTCollection abi > NFTCollection.json
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
